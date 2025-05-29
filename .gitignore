@@ -2,8 +2,6 @@ venv/
 __pycache__/
 *.sqlite3
 *.idea/
-
-# Python
 __pycache__/
 *.pyc
 *.pyo
@@ -14,6 +12,5 @@ venv/
 db.sqlite3
 /staticfiles/
 /media/
-.vscode/
 .DS_Store
 .env
