@@ -1,0 +1,35 @@
+{% extends 'task_app/base.html' %}
+
+{% block page_header %}
+	<h2>Tasks due this week</h2>
+{% endblock %}
+
+{% block content %}
+  {% if task_num == 0 %}
+  	<p style="text-align: center;color: grey">Your week is free!</p>
+    <p style="text-align: center; font-size: x-large"><a href="{% url 'task_app:add_task' %}">Add a Task</a></p>
+  {% else %}
+   <a href="{% url 'task_app:add_task' %}"><button class="btn btn-outline-primary btn-sm">Add a Task</button></a>
+  {% endif %}
+  <p></p>
+
+  {% for task in tasks %}
+  	<label class="list-group-item d-flex gap-3 mb-2">
+      <form method="post" action="{% url 'task_app:mark_complete' task.id %}">
+        {% csrf_token %}
+        <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+      </form>
+      <span class="form-checked-content">
+        <a href="{% url 'task_app:task' task.id %}"><strong>{{ task.title }}</strong></a>
+        <small class="d-block text-body-secondary">
+          {% if task.due_date == None %}
+            No due date
+          {% else %}
+            Due: {{ task.due_date.date }}
+          {% endif %}
+        </small>
+      </span>
+    </label>
+  {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'task_app/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+	<h2>Edit Task</h2>
+{% endblock %}
+
+{% block content %}
+
+  <form action="{% url 'task_app:edit_task' task.id %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary">Save Changes</button>
+    <a href="javascript:history.back()"><button type="button" class="btn btn-danger">Cancel</button></a>
+
+{#    {% bootstrap_button 'Save Changes' %}#}
+
+  </form>
+{% endblock content %}

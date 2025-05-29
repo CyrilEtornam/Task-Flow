@@ -1,0 +1,35 @@
+{% extends 'task_app/base.html' %}
+
+{% block page_header %}
+	<h2>Overdue Tasks</h2>
+{% endblock %}
+
+{% block content %}
+{% if task_num == 0 %}
+  	<p style="text-align: center;color: grey">You're on track!</p>
+    <p style="text-align: center; font-size: xx-large; font-weight: bold">No Overdue Tasks</p>
+  {% else %}
+  	<p style="text-align: center;color: grey">You might want to postpone tasks</p>
+  {% endif %}
+{#  <p></p>#}
+
+  {% for task in tasks %}
+
+    <div class="list-group-item d-flex gap-3 mb-2">
+      <form method="post" action="{% url 'task_app:mark_complete' task.id %}">
+        {% csrf_token %}
+        <label>
+          <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+        </label>
+      </form>
+      <span class="form-checked-content">
+        <a href="{% url 'task_app:task' task.id %}" style="color:#ff2121"><strong>{{ task.title }}</strong></a>
+        <small class="d-block text-body-danger">
+            Overdue since: {{ task.due_date.date }}
+        </small>
+      </span>
+    </div>
+
+  {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'task_app/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+		<h2>Add a new Task</h2>
+{% endblock %}
+
+
+{% block content %}
+  <form action="{% url 'task_app:add_task' %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <button name="submit" type="submit" class="btn btn-outline-primary">Add Task</button>
+  </form>
+{% endblock %}

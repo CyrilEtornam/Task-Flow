@@ -1,0 +1,17 @@
+{% extends 'task_app/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+  <h2>Log in to your account.</h2>
+{% endblock page_header %}
+
+{% block content %}
+	<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-outline-primary">Log in</button>
+
+  <input type="hidden" name="next"
+         value="{% url 'task_app:index' %}">
+  </form>
+{% endblock %}

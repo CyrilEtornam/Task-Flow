@@ -1,0 +1,24 @@
+{% extends 'task_app/base.html' %}
+
+{% block page_header %}
+	<h2>{{ task.title }}</h2>
+{% endblock %}
+
+{% block content %}
+  <p>Task details:</p>
+  <ul>
+    <li><p>Description: {{ task.description }}</p></li>
+    <li><p>Date added: {{ task.date_added }}</p></li>
+    <li><p>Due date: {{ task.due_date }}</p></li>
+    <li><p>Status: {% if task.is_complete %}
+    	Completed
+      {% else %}
+      Not completed
+    {% endif %} </p></li>
+  </ul>
+
+  <a href="{% url 'task_app:edit_task' task.id %}"><button class="btn btn-outline-primary">Edit Task</button></a>
+  <a href="{% url 'task_app:delete_task' task.id %}"><button class="btn btn-outline-danger"
+   onclick="return confirm('Are you sure you want to delete this task?');">Delete Task</button></a>
+
+{% endblock content %}

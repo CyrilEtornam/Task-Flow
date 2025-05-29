@@ -1,0 +1,54 @@
+{% extends 'task_app/base.html' %}
+{% load static %}
+
+{% block page_header %}
+	  <h2>All Tasks</h2>
+{% endblock %}
+
+{% block content %}
+  {% if task_num == 0 %}
+  	<p style="text-align: center;color: grey">No tasks for you!</p>
+    <p style="text-align: center; font-size: x-large"><a href="{% url 'task_app:add_task' %}">Add a new Task</a></p>
+  {% else %}
+   <a href="{% url 'task_app:add_task' %}"><button class="btn btn-outline-primary btn-sm">Add a new Task</button></a>
+  {% endif %}
+  <p></p>
+  <p></p>
+
+  {% for task in tasks %}
+{#    <div class="card mb-3 p-1">#}
+{#      <form method="post" action="{% url 'task_app:mark_complete' task.id %}">#}
+{#        {% csrf_token %}#}
+{#        <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>#}
+{#        {{ task.title }}#}
+{#        <a href="{% url 'task_app:task' task.id %}">{{ task.title }}</a>#}
+{#      </form>#}
+{#    </div>#}
+
+
+    <label class="list-group-item d-flex gap-3 mb-2">
+      <form method="post" action="{% url 'task_app:mark_complete' task.id %}">
+        {% csrf_token %}
+        <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+      </form>
+      <span class="form-checked-content">
+        <a href="{% url 'task_app:task' task.id %}"><strong>{{ task.title }}</strong></a>
+        <small class="d-block text-body-secondary">
+          {% if task.due_date == None %}
+            No due date
+          {% else %}
+            Due: {{ task.due_date }}
+          {% endif %}
+        </small>
+      </span>
+    </label>
+  {% endfor %}
+
+{% endblock content %}
+
+
+
+{#    <p>#}
+{#        <input type="checkbox" onchange="{% url 'task_app:task_completed' %}">#}
+{#        <a href="{% url 'task_app:task' task.id %}">{{ task.title }}</a> <small>{{ task.date_added }}</small>#}
+{#    </p>#}

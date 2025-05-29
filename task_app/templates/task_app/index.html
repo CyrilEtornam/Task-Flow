@@ -1,0 +1,61 @@
+{% extends 'task_app/base.html' %}
+
+{% block page_header %}
+	<div class="jumbotron">
+
+    <h1>Get Things Done—Effortlessly</h1>
+    <p>
+      Welcome to TaskFlow, your personal command center for getting organized,
+      staying focused, and making progress every day. Whether you're managing
+      school assignments, personal goals, or work projects, TaskFlow is built
+      to simplify your workflow—without the clutter.
+    </p>
+
+    <h2>Why TaskFlow?</h2>
+    <p>
+      Unlike bulky productivity apps, TaskFlow is designed to be fast, intuitive,
+      and distraction-free. Every feature is crafted to help you spend less time
+      organizing and more time doing.
+    </p>
+
+    <h2 class="header-text mt-5">Key Features</h2>
+    <ul>
+      <li><strong>✅ Quick Task Creation</strong><p>Add tasks in seconds with a simple, clean interface.</p></li>
+      <li><strong>✔️ One-Click Completion</strong>
+        <p>Mark tasks as done instantly with a checkbox that updates in real time.</p></li>
+      <li><strong>📆 Daily & Weekly Views</strong>
+        <p>Toggle between views to manage both your short-term and long-term goals.</p></li>
+      <li><strong>📱 Fully Responsive</strong>
+        <p>Use it comfortably on desktop, tablet, or mobile—anytime, anywhere.</p></li>
+      <li><strong>☁️ Cloud Sync</strong>
+        <p>Your data stays safe and in sync, even if you switch devices.</p></li>
+      <li><strong>🔁 Recurring Tasks (coming soon)</strong>
+        <p>Automate repetitive tasks so you never forget them again.</p></li>
+    </ul>
+
+  <h2>Built for Students, Creatives, and Everyday Hustlers</h2>
+  <p>No matter who you are, TaskFlow helps you reclaim control of your time and energy. It’s perfect for:</p>
+  <ul>
+    <li>Busy students managing coursework</li>
+    <li>Freelancers balancing multiple clients</li>
+    <li>Creators organizing ideas and deadlines</li>
+    <li>Anyone who wants a simple, reliable task manager</li>
+  </ul>
+
+  <h3>Get Started in Seconds</h3>
+  <a href="{% url 'users:register' %}"><button class="btn btn-success mb-2">Try TaskFlow it's free!</button></a>
+  <a href="{% url 'users:login' %}"><button class="btn btn-primary">Log in Here</button></a>
+
+  </div>
+
+  <hr>
+  <div class="footer mb-2" style="background-color: lightgrey; padding: 5px; border-radius: 5px">
+  <p>Need help? Send us feedback <a href="https://cyrilnyavor@gmail.com">here</a></p>
+  <p>© 2025 TaskFlow<sup>TM</sup>. All rights reserved.</p>
+  </div>
+{% endblock %}
+
+{#{% block content %}#}
+{##}
+{#  <a href="{% url 'task_app:add_task' %}">Add a new Task</a>#}
+{#{% endblock content %}#}

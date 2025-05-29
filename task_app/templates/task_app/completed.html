@@ -1,0 +1,42 @@
+{% extends 'task_app/base.html' %}
+
+{% block page_header %}
+	<h2>Completed Tasks</h2>
+{% endblock %}
+
+{% block content %}
+  {% if task_num == 0 %}
+  	<p style="text-align: center;color: grey">Nothing here</p>
+    <p style="text-align: center; font-size: x-large; font-weight: bold">Finish some tasks and you'll find them here</p>
+  {% else %}
+    <a href="{% url 'task_app:clear_completed' %}"><button class="btn btn-outline-danger btn-sm">
+    Clear All Completed Tasks</button></a>
+  {% endif %}
+
+  <p></p>
+
+  {% for task in tasks %}
+{#  	<form method="post" action="{% url 'task_app:mark_complete' task.id %}">#}
+{#      {% csrf_token %}#}
+{#      <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>#}
+{#      <a href="{% url 'task_app:task' task.id %}">{{ task.title }}</a>#}
+{#    </form>#}
+
+    <div class="list-group-item d-flex gap-3 mb-2">
+      <form method="post" action="{% url 'task_app:mark_complete' task.id %}">
+        {% csrf_token %}
+        <label>
+          <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+        </label>
+      </form>
+      <span class="form-checked-content">
+        <a href="{% url 'task_app:task' task.id %}"style="color: rgba(128,128,128,0.61)"><strong>{{ task.title }}</strong></a>
+        <small class="d-block text-body-secondary">
+            Completed: {{ task.date_completed }}
+        </small>
+      </span>
+    </div>
+
+  {% endfor %}
+
+{% endblock content %}
