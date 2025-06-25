@@ -5,10 +5,10 @@ TaskFlow is a lightweight, minimalist Django-based task manager that helps users
 ---
 
 ## Preview
-![img preview](static/task_app/images/mobile-preview-home.png)
-![img tasks](static/task_app/images/mobile-preview-tasks.png)
-![img sidebar](static/task_app/images/mobile-preview-sidebar.png)
-![img sidebar](static/task_app/images/mobile-preview-details.png)
+![img preview](static/task_app/images/mobile-preview-index.PNG)
+![img tasks](static/task_app/images/mobile-preview-tasks.PNG)
+![img sidebar](static/task_app/images/mobile-preview-sidebar.PNG)
+![img sidebar](static/task_app/images/mobile-preview-details.PNG)
 ![img sidebar](static/task_app/images/large-preview.png)
 ![img sidebar](static/task_app/images/large-preview-tasks.png)
 
