@@ -16,11 +16,6 @@
   <p></p>
 
   {% for task in tasks %}
-{#  	<form method="post" action="{% url 'task_app:mark_complete' task.id %}">#}
-{#      {% csrf_token %}#}
-{#      <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>#}
-{#      <a href="{% url 'task_app:task' task.id %}">{{ task.title }}</a>#}
-{#    </form>#}
 
     <div class="list-group-item d-flex gap-3 mb-2">
       <form method="post" action="{% url 'task_app:mark_complete' task.id %}">

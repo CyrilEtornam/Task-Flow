@@ -12,6 +12,12 @@
     <button name="submit" class="btn btn-outline-primary">Log in</button>
 
   <input type="hidden" name="next"
-         value="{% url 'task_app:index' %}">
+         value="{% url 'task_app:all_tasks' %}">
   </form>
+
+  <hr>
+  <div style="text-align: center">
+  <p>Don't have an account?</p>
+  <a href="{% url 'users:register' %}"><button class="btn btn-success">Sign up</button></a>
+  </div>
 {% endblock %}

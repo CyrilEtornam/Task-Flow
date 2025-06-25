@@ -31,7 +31,14 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border py-2 px-3 " style="z-index: 1030;">
 {#  <div class="container-fluid d-flex justify-content-between align-items-center">#}
 
-    <a class="navbar-brand mb-0 h1" href="{% url 'task_app:index' %}"><img src="{% static 'task_app/images/logo.png' %}" style="width: 80px">TaskFlow</a>
+    	
+    <a class="navbar-brand mb-0 h1"
+        {% if user.is_authenticated %}
+         href="{% url 'task_app:all_tasks' %}"
+        {% else %}
+          href="{% url 'task_app:index' %}"
+        {% endif %}
+    ><img src="{% static 'task_app/images/logo.png' %}" style="width: 80px">TaskFlow</a>
 
 
     <button class="navbar-toggler d-lg-none col-md-2" type="button" data-bs-toggle="offcanvas"

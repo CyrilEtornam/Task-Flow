@@ -62,7 +62,6 @@ def add_to_today(request):
             new_task = form.save(commit=False)
             new_task.owner = request.user
             form.save()
-            # print("Saving due_date:", instance.due_date)
             return redirect('task_app:today')
     return render(request, 'task_app/add_to_today.html', {'form': form})
 

@@ -10,5 +10,14 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit" class="btn btn-success">Sign up</button>
+
+    <input type="hidden" name="next"
+         value="{% url 'task_app:all_tasks' %}">
   </form>
+
+    <hr>
+    <div style="text-align: center">
+    <p>Already have an account?</p>
+    <a href="{% url 'users:login' %}"><button class="btn btn-primary">Log in</button></a>
+    </div>
 {% endblock %}
